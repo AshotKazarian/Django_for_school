@@ -1,3 +1,30 @@
+:root {
+    --primary-color: #6c5ce7;
+    --primary-hover: #5b4cd6;
+    --text-color: #333;
+    --text-secondary: #666;
+    --text-muted: #6c757d;
+    --bg-color: #f8f9fa;
+    --bg-white: white;
+    --border-color: #e9ecef;
+    --success-bg: #d4edda;
+    --success-color: #155724;
+    --success-border: #c3e6cb;
+    --error-bg: #f8d7da;
+    --error-color: #721c24;
+    --error-border: #f5c6cb;
+    --warning-bg: #fff3cd;
+    --warning-color: #856404;
+    --warning-border: #ffeaa7;
+    --info-bg: #d1ecf1;
+    --info-color: #0c5460;
+    --info-border: #bee5eb;
+    --shadow: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-hover: 0 8px 15px rgba(0,0,0,0.2);
+    --border-radius: 10px;
+    --transition: all 0.3s;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,15 +34,15 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    background-color: #f8f9fa;
-    color: #333;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     overflow-wrap: break-word;
     word-wrap: break-word;
 }
 
 /* Header */
 .header {
-    background: white;
+    background: var(--bg-white);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     padding: 1rem 0;
     position: sticky;
@@ -39,7 +66,7 @@ body {
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #6c5ce7;
+    color: var(--primary-color);
     text-decoration: none;
 }
 
@@ -52,13 +79,13 @@ body {
 
 .nav-links a {
     text-decoration: none;
-    color: #333;
+    color: var(--text-color);
     font-weight: 500;
     transition: color 0.3s;
 }
 
 .nav-links a:hover {
-    color: #6c5ce7;
+    color: var(--primary-color);
 }
 
 /* Кнопки */
@@ -69,33 +96,33 @@ body {
     text-decoration: none;
     display: inline-block;
     font-weight: 500;
-    transition: all 0.3s;
+    transition: var(--transition);
     cursor: pointer;
     font-size: 0.9rem;
 }
 
 .btn-primary {
-    background: #6c5ce7;
+    background: var(--primary-color);
     color: white;
 }
 
 .btn-primary:hover {
-    background: #5b4cd6;
+    background: var(--primary-hover);
 }
 
 .btn-outline {
-    border: 2px solid #6c5ce7;
-    color: #6c5ce7;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
     background: transparent;
 }
 
 .btn-outline:hover {
-    background: #6c5ce7;
+    background: var(--primary-color);
     color: white;
 }
 
 .btn-secondary {
-    background: #6c757d;
+    background: var(--text-muted);
     color: white;
 }
 
@@ -121,31 +148,31 @@ body {
 }
 
 .alert-success {
-    background: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
+    background: var(--success-bg);
+    color: var(--success-color);
+    border: 1px solid var(--success-border);
 }
 
 .alert-error {
-    background: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+    background: var(--error-bg);
+    color: var(--error-color);
+    border: 1px solid var(--error-border);
 }
 
 .alert-warning {
-    background: #fff3cd;
-    color: #856404;
-    border: 1px solid #ffeaa7;
+    background: var(--warning-bg);
+    color: var(--warning-color);
+    border: 1px solid var(--warning-border);
 }
 
 /* Формы */
 .form-container {
     max-width: 500px;
     margin: 0 auto;
-    background: white;
+    background: var(--bg-white);
     padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
 }
 
 .form-group {
@@ -155,7 +182,7 @@ body {
 .form-control {
     width: 100%;
     padding: 0.75rem;
-    border: 2px solid #e9ecef;
+    border: 2px solid var(--border-color);
     border-radius: 5px;
     font-size: 1rem;
     transition: border-color 0.3s;
@@ -163,7 +190,7 @@ body {
 
 .form-control:focus {
     outline: none;
-    border-color: #6c5ce7;
+    border-color: var(--primary-color);
 }
 
 .form-label {
@@ -174,7 +201,7 @@ body {
 
 .form-text {
     font-size: 0.875rem;
-    color: #6c757d;
+    color: var(--text-muted);
     margin-top: 0.25rem;
 }
 
@@ -193,16 +220,16 @@ body {
 }
 
 .card {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    background: var(--bg-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
     overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    box-shadow: var(--shadow-hover);
 }
 
 .card-img {
@@ -219,13 +246,13 @@ body {
     font-size: 1.1rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
-    color: #333;
+    color: var(--text-color);
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
 
 .card-text {
-    color: #666;
+    color: var(--text-secondary);
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
     word-wrap: break-word;
@@ -238,7 +265,7 @@ body {
     align-items: center;
     margin-top: 1rem;
     padding-top: 1rem;
-    border-top: 1px solid #e9ecef;
+    border-top: 1px solid var(--border-color);
 }
 
 .card-author {
@@ -246,7 +273,7 @@ body {
     align-items: center;
     gap: 0.5rem;
     font-size: 0.875rem;
-    color: #666;
+    color: var(--text-secondary);
 }
 
 /* Пагинация */
@@ -262,31 +289,31 @@ body {
     padding: 0.5rem 1rem;
     border: 1px solid #ddd;
     text-decoration: none;
-    color: #333;
+    color: var(--text-color);
     border-radius: 5px;
-    transition: all 0.3s;
+    transition: var(--transition);
     font-size: 0.9rem;
 }
 
 .page-link:hover,
 .page-link.current {
-    background: #6c5ce7;
+    background: var(--primary-color);
     color: white;
-    border-color: #6c5ce7;
+    border-color: var(--primary-color);
 }
 
 .page-link.disabled {
-    color: #6c757d;
+    color: var(--text-muted);
     pointer-events: none;
-    background: #f8f9fa;
+    background: var(--bg-color);
 }
 
 /* Профиль */
 .profile-header {
-    background: white;
+    background: var(--bg-white);
     padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
     margin-bottom: 2rem;
     display: flex;
     gap: 2rem;
@@ -299,7 +326,7 @@ body {
     height: 100px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #6c5ce7;
+    border: 3px solid var(--primary-color);
 }
 
 .avatar-small {
@@ -313,12 +340,12 @@ body {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background: #e9ecef;
+    background: var(--border-color);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #6c757d;
-    border: 3px solid #6c5ce7;
+    color: var(--text-muted);
+    border: 3px solid var(--primary-color);
     font-size: 2rem;
 }
 
@@ -326,23 +353,23 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #e9ecef;
+    background: var(--border-color);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #6c757d;
+    color: var(--text-muted);
     font-size: 0.8rem;
 }
 
 .profile-info h1 {
     margin-bottom: 0.5rem;
-    color: #333;
+    color: var(--text-color);
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
 
 .profile-bio {
-    color: #666;
+    color: var(--text-secondary);
     line-height: 1.6;
     max-width: 600px;
     word-wrap: break-word;
@@ -362,19 +389,19 @@ body {
 .stat-number {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #6c5ce7;
+    color: var(--primary-color);
 }
 
 .stat-label {
     font-size: 0.875rem;
-    color: #666;
+    color: var(--text-secondary);
 }
 
 /* Пустые состояния */
 .empty-state {
     text-align: center;
     padding: 3rem;
-    color: #666;
+    color: var(--text-secondary);
 }
 
 .empty-state-icon {
@@ -393,14 +420,14 @@ body {
 .breadcrumb {
     margin-bottom: 2rem;
     padding: 1rem 0;
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 1px solid var(--border-color);
     font-size: 0.9rem;
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
 
 .breadcrumb a {
-    color: #6c5ce7;
+    color: var(--primary-color);
     text-decoration: none;
 }
 
@@ -410,11 +437,11 @@ body {
 
 .breadcrumb .separator {
     margin: 0 0.5rem;
-    color: #6c757d;
+    color: var(--text-muted);
 }
 
 .breadcrumb .current {
-    color: #333;
+    color: var(--text-color);
     font-weight: 500;
 }
 
@@ -427,9 +454,9 @@ body {
 }
 
 .work-image-container {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    background: var(--bg-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
     overflow: hidden;
 }
 
@@ -443,18 +470,18 @@ body {
 .work-image-placeholder {
     width: 100%;
     height: 400px;
-    background: #e9ecef;
+    background: var(--border-color);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #6c757d;
+    color: var(--text-muted);
     font-size: 1.1rem;
 }
 
 .work-info-column {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    background: var(--bg-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
     padding: 1.5rem;
     min-width: 0;
 }
@@ -462,13 +489,13 @@ body {
 .work-header {
     margin-bottom: 1.25rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .work-title {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #333;
+    color: var(--text-color);
     margin-bottom: 0.75rem;
     line-height: 1.2;
     word-wrap: break-word;
@@ -484,7 +511,7 @@ body {
 }
 
 .author-name {
-    color: #6c5ce7;
+    color: var(--primary-color);
     font-weight: 500;
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -493,10 +520,10 @@ body {
 .section-title {
     font-size: 1rem;
     font-weight: 600;
-    color: #333;
+    color: var(--text-color);
     margin-bottom: 0.75rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 1px solid var(--border-color);
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
@@ -529,7 +556,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem;
-    background: #f8f9fa;
+    background: var(--bg-color);
     border-radius: 4px;
     font-size: 0.85rem;
     word-wrap: break-word;
@@ -538,11 +565,11 @@ body {
 
 .spec-label {
     font-weight: 500;
-    color: #333;
+    color: var(--text-color);
 }
 
 .spec-value {
-    color: #6c5ce7;
+    color: var(--primary-color);
     font-weight: 600;
     text-align: right;
     word-wrap: break-word;
@@ -560,7 +587,7 @@ body {
 }
 
 .tool-tag {
-    background: #6c5ce7;
+    background: var(--primary-color);
     color: white;
     padding: 0.25rem 0.6rem;
     border-radius: 12px;
@@ -581,8 +608,8 @@ body {
 }
 
 .tag {
-    background: #e9ecef;
-    color: #6c757d;
+    background: var(--border-color);
+    color: var(--text-muted);
     padding: 0.25rem 0.6rem;
     border-radius: 3px;
     font-size: 0.75rem;
@@ -593,9 +620,9 @@ body {
 
 /* Секция комментариев */
 .comments-section {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    background: var(--bg-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
     padding: 2rem;
     margin-top: 2rem;
 }
@@ -607,7 +634,7 @@ body {
     padding: 1.5rem;
     background: #e7f3ff;
     border-radius: 8px;
-    border-left: 4px solid #6c5ce7;
+    border-left: 4px solid var(--primary-color);
 }
 
 .notice-icon {
@@ -615,7 +642,7 @@ body {
 }
 
 .notice-text h4 {
-    color: #333;
+    color: var(--text-color);
     margin-bottom: 0.5rem;
     font-size: 1rem;
     word-wrap: break-word;
@@ -623,7 +650,7 @@ body {
 }
 
 .notice-text p {
-    color: #666;
+    color: var(--text-secondary);
     margin: 0;
     font-size: 0.9rem;
     word-wrap: break-word;
@@ -632,10 +659,10 @@ body {
 
 /* Стили для чекбоксов инструментов */
 .checkbox-group {
-    border: 1px solid #e9ecef;
+    border: 1px solid var(--border-color);
     border-radius: 5px;
     padding: 1rem;
-    background: #f8f9fa;
+    background: var(--bg-color);
     max-height: 200px;
     overflow-y: auto;
 }
@@ -770,10 +797,10 @@ body {
 .form-container {
     max-width: 500px;
     margin: 0 auto;
-    background: white;
+    background: var(--bg-white);
     padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
 }
 
 .form-group {
@@ -783,18 +810,18 @@ body {
 .form-control {
     width: 100%;
     padding: 0.75rem;
-    border: 2px solid #e9ecef;
+    border: 2px solid var(--border-color);
     border-radius: 5px;
     font-size: 1rem;
     transition: border-color 0.3s;
-    resize: vertical; /* Разрешаем изменение размера только по вертикали */
-    min-height: 120px; /* Минимальная высота */
-    max-height: 400px; /* Максимальная высота */
+    resize: vertical;
+    min-height: 120px;
+    max-height: 400px;
 }
 
 .form-control:focus {
     outline: none;
-    border-color: #6c5ce7;
+    border-color: var(--primary-color);
 }
 
 input.form-control,
@@ -818,7 +845,7 @@ textarea.form-control {
 
 .form-text {
     font-size: 0.875rem;
-    color: #6c757d;
+    color: var(--text-muted);
     margin-top: 0.25rem;
 }
 
@@ -830,10 +857,10 @@ textarea.form-control {
 
 /* Стили для чекбоксов инструментов */
 .checkbox-group {
-    border: 1px solid #e9ecef;
+    border: 1px solid var(--border-color);
     border-radius: 5px;
     padding: 1rem;
-    background: #f8f9fa;
+    background: var(--bg-color);
     max-height: 200px;
     overflow-y: auto;
 }
@@ -865,25 +892,25 @@ textarea.form-control {
 }
 
 .alert-success {
-    background: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
+    background: var(--success-bg);
+    color: var(--success-color);
+    border: 1px solid var(--success-border);
 }
 
 .alert-error {
-    background: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+    background: var(--error-bg);
+    color: var(--error-color);
+    border: 1px solid var(--error-border);
 }
 
 .alert-warning {
-    background: #fff3cd;
-    color: #856404;
-    border: 1px solid #ffeaa7;
+    background: var(--warning-bg);
+    color: var(--warning-color);
+    border: 1px solid var(--warning-border);
 }
 
 .alert-info {
-    background: #d1ecf1;
-    color: #0c5460;
-    border: 1px solid #bee5eb;
+    background: var(--info-bg);
+    color: var(--info-color);
+    border: 1px solid var(--info-border);
 }
