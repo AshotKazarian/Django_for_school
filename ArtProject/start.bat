@@ -17,7 +17,7 @@ if errorlevel 1 (
 
 
 pip install -r requirements.txt
-python manage.py makemigrations
+python manage.py makemigrations gallery
 python manage.py migrate
 
 python manage.py shell -c "from django.contrib.auth.models import User; exit(0 if User.objects.filter(is_superuser=True).exists() else 1)"
