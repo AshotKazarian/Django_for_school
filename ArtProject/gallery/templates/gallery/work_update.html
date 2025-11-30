@@ -1,0 +1,33 @@
+{% extends 'gallery/base.html' %}
+
+{% block title %}Редактирование работы - ArtProject{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Редактирование работы</h1>
+</div>
+
+<div class="form-container">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        {% for field in form %}
+            <div class="form-group">
+                <label class="form-label">{{ field.label }}</label>
+                {{ field }}
+                {% if field.help_text %}
+                    <div class="form-text">{{ field.help_text }}</div>
+                {% endif %}
+                {% if field.errors %}
+                    <div class="form-errors">{{ field.errors }}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        
+        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+            <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+            <a href="{% url 'work_detail' work.author.username work.id %}" class="btn btn-secondary">Отмена</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
