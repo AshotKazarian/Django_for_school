@@ -7,8 +7,8 @@ class Genre(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name='Название жанра')
     
     class Meta:
-        verbose_name = 'Жанр'
-        verbose_name_plural = 'Жанры'
+        #verbose_name = 'Жанр'
+        #verbose_name_plural = 'Жанры'
         ordering = ['name']
     
     def __str__(self):
@@ -19,8 +19,8 @@ class Tool(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name='Название инструмента')
     
     class Meta:
-        verbose_name = 'Инструмент'
-        verbose_name_plural = 'Инструменты'
+        #verbose_name = 'Инструмент'
+        #verbose_name_plural = 'Инструменты'
         ordering = ['name']
     
     def __str__(self):
@@ -31,8 +31,8 @@ class Proportion(models.Model):
     option = models.CharField(max_length=50, unique=True, verbose_name='Вариант соотношения')
     
     class Meta:
-        verbose_name = 'Соотношение'
-        verbose_name_plural = 'Соотношения'
+        #verbose_name = 'Соотношение'
+        #verbose_name_plural = 'Соотношения'
         ordering = ['option']
     
     def __str__(self):
