@@ -21,7 +21,10 @@
                             <button type="submit" class="btn btn-outline">Выйти</button>
                         </form>
                     {% else %}
-                        <a href="{% url 'login' %}" class="btn btn-primary">Войти</a>
+                        <form method="post" action="{% url 'login' %}" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-outline">Войти</button>
+                        </form>
                     {% endif %}
                 </div>
             </nav>
@@ -45,4 +48,5 @@
         </div>
     </main>
 </body>
+
 </html>
