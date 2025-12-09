@@ -59,7 +59,7 @@ class ProportionAdmin(admin.ModelAdmin):
 class WorkAdmin(admin.ModelAdmin):
     """Админка для работ"""
     list_display = ('title', 'author', 'year', 'genre', 'created_at')
-    list_filter = ('created_at')
+    list_filter = ('created_at',)
     search_fields = ('title', 'description', 'tags', 'author__username')
     readonly_fields = ('created_at', 'updated_at')
     filter_horizontal = ('tools',)
@@ -80,4 +80,5 @@ class WorkAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
         """Оптимизация запросов к базе данных"""
         return super().get_queryset(request).select_related('author', 'genre', 'proportion').prefetch_related('tools')
+
 
