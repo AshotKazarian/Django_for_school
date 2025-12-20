@@ -24,29 +24,39 @@ echo 3. Installing packages...
 pip install -r requirements.txt
 
 echo.
-echo 4. MIGRATIONS - This may take a moment...
+echo 4. Applying migrations...
 python manage.py migrate
 
+echo.
+echo 5. CHECKING FOR ADMIN USER...
+python manage.py shell -c "from django.contrib.auth.models import User; exit(0 if User.objects.filter(is_superuser=True).exists() else 1)"
 if errorlevel 1 (
-    echo ERROR in migrations!
     echo.
-    echo Trying to fix database...
-    del db.sqlite3 2>nul
-    python manage.py migrate
+    echo ========================================
+    echo    NO ADMIN USER FOUND
+    echo ========================================
+    echo.
+    echo You need to create an admin account.
+    echo.
+    echo The next command will ask you for:
+    echo   - Username
+    echo   - Email (optional)
+    echo   - Password
+    echo.
+    echo Please remember your credentials!
+    echo.
+    pause
+    python manage.py createsuperuser
 )
 
 echo.
-echo 5. Creating admin user...
-python manage.py shell -c "from django.contrib.auth.models import User; User.objects.create_superuser('admin', '', 'admin123') if not User.objects.filter(username='admin').exists() else print('Admin exists')"
-
+echo ========================================
+echo          READY TO START
+echo ========================================
 echo.
-echo ========================================
-echo          READY
-echo ========================================
 echo WEBSITE:  http://127.0.0.1:8000
+echo.
 echo ADMIN:    http://127.0.0.1:8000/admin
-echo USER:     admin
-echo PASS:     admin123
 echo.
 echo Press CTRL+C to stop
 echo ========================================
