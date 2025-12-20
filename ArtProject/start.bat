@@ -35,10 +35,6 @@ echo Installing packages...
 pip install -r requirements.txt
 
 echo.
-echo Creating migrations...
-python manage.py makemigrations gallery
-
-echo.
 echo Applying migrations...
 python manage.py migrate
 
