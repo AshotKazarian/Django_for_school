@@ -1,52 +1,72 @@
 @echo off
-chcp 65001 >nul
+chcp 65001 > nul
 title ArtProject
 
 echo ========================================
-echo          ЗАПУСК ПРОЕКТА ARTPROJECT
+echo           3anyck npoekta ARTPROJECT
 echo ========================================
 echo.
 
-echo Проверка Python...
+echo 1. Проверка Python...
 python --version
 if errorlevel 1 (
-    echo Установка Python: https://www.python.org/ftp/python/3.14.0/python-3.14.0-amd64.exe
+    echo ОШИБКА: Python не найден!
+    echo.
+    echo Установите Python сюда: https://www.python.org/downloads/
+    echo.
+    echo Важно: при установке отметьте [X] "Add Python to PATH"
+    echo.
     pause
     exit /b 1
 )
 
 echo.
-echo Проверка виртуального окружения...
-if not exist "venv\Scripts\python.exe" (
-    echo Создание виртуального окружения...
+echo 2. Активация виртуального окружения...
+if exist "venv\Scripts\activate.bat" (
+    call venv\Scripts\activate.bat
+) else (
+    echo Виртуальное окружение не найдено. Создание...
     python -m venv venv
-)
-
-call venv\Scripts\activate.bat
-
-pip install -r requirements.txt
-python manage.py makemigrations gallery
-python manage.py migrate
-
-python manage.py shell -c "from django.contrib.auth.models import User; exit(0 if User.objects.filter(is_superuser=True).exists() else 1)"
-if errorlevel 1 (
-    echo.
-    echo СОЗДАНИЕ АДМИНИСТРАТОРА
-    echo ========================================
-    python manage.py createsuperuser
+    call venv\Scripts\activate.bat
 )
 
 echo.
-echo ЗАПУСК
+echo 3. Установка библиотек...
+pip install -r requirements.txt
+
+echo.
+echo 4. Создание миграций и применение...
+python manage.py makemigrations
+python manage.py migrate
+
+echo.
+echo 5. Проверка и создание суперпользователя...
+python -c "
+from django.contrib.auth.models import User
+if User.objects.filter(is_superuser=True).exists():
+    print('Суперпользователь уже существует')
+else:
+    print('Создание суперпользователя...')
+    User.objects.create_superuser('admin', 'admin@example.com', 'admin123')
+    print('Создан: логин=admin, пароль=admin123')
+"
+
+echo.
+echo ========================================
+echo          CTAPT
 echo ========================================
 echo.
 echo САЙТ:  http://127.0.0.1:8000
+echo АДМИН: http://127.0.0.1:8000/admin
 echo.
-echo АДМИН: http://127.0.0.1:8000/admin  
+echo Логин:    admin
+echo Пароль:   admin123
 echo.
-echo Ctrl+C = ОСТАНОВКА
+echo Остановка: CTRL+C
 echo ========================================
 echo.
 
 python manage.py runserver
+
+echo.
 pause
