@@ -1,68 +1,73 @@
 @echo off
-chcp 65001 > nul
+chcp 65001 >nul
 title ArtProject
 
 echo ========================================
-echo           3anyck npoekta ARTPROJECT
+echo          STARTING ARTPROJECT
 echo ========================================
 echo.
 
-echo 1. Проверка Python...
+echo Checking Python...
 python --version
 if errorlevel 1 (
-    echo ОШИБКА: Python не найден!
+    echo ERROR: Python not found!
     echo.
-    echo Установите Python сюда: https://www.python.org/downloads/
+    echo Install Python: https://www.python.org/ftp/python/3.14.0/python-3.14.0-amd64.exe
     echo.
-    echo Важно: при установке отметьте [X] "Add Python to PATH"
+    echo IMPORTANT: Check "Add Python to PATH" during installation
     echo.
     pause
     exit /b 1
 )
 
 echo.
-echo 2. Активация виртуального окружения...
-if exist "venv\Scripts\activate.bat" (
+echo Checking virtual environment...
+if exist "venv\Scripts\python.exe" (
     call venv\Scripts\activate.bat
 ) else (
-    echo Виртуальное окружение не найдено. Создание...
+    echo Creating virtual environment...
     python -m venv venv
     call venv\Scripts\activate.bat
 )
 
 echo.
-echo 3. Установка библиотек...
+echo Installing packages...
 pip install -r requirements.txt
 
 echo.
-echo 4. Создание миграций и применение...
-python manage.py makemigrations
+echo Creating migrations...
+python manage.py makemigrations gallery
+
+echo.
+echo Applying migrations...
 python manage.py migrate
 
 echo.
-echo 5. Проверка и создание суперпользователя...
+echo Checking for admin user...
 python -c "
 from django.contrib.auth.models import User
 if User.objects.filter(is_superuser=True).exists():
-    print('Суперпользователь уже существует')
+    print('Admin user exists')
 else:
-    print('Создание суперпользователя...')
+    print('CREATING ADMIN USER')
+    print('========================================')
     User.objects.create_superuser('admin', 'admin@example.com', 'admin123')
-    print('Создан: логин=admin, пароль=admin123')
+    print('Created: admin / admin123')
 "
 
 echo.
 echo ========================================
-echo          CTAPT
+echo          PROJECT READY
 echo ========================================
 echo.
-echo САЙТ:  http://127.0.0.1:8000
-echo АДМИН: http://127.0.0.1:8000/admin
+echo WEBSITE: http://127.0.0.1:8000
 echo.
-echo Логин:    admin
-echo Пароль:   admin123
+echo ADMIN:   http://127.0.0.1:8000/admin
 echo.
-echo Остановка: CTRL+C
+echo USER:    admin
+echo PASS:    admin123
+echo.
+echo Stop with: CTRL+C
 echo ========================================
 echo.
 
