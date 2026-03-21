@@ -67,11 +67,29 @@ class UserRegisterForm(forms.ModelForm):
 
 class UserLoginForm(AuthenticationForm):
     """Форма входа пользователя"""
+    
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        for field_name in self.fields:
-            self.fields[field_name].widget.attrs['class'] = 'form-control'
+        self.fields['username'].widget.attrs['class'] = 'form-control'
+        self.fields['password'].widget.attrs['class'] = 'form-control'
         self.fields['username'].label = 'Никнейм'
+        self.fields['password'].label = 'Пароль'
+    
+    def confirm_login_allowed(self, user):
+        """Переопределяем метод, чтобы убрать лишние сообщения"""
+        if not user.is_active:
+            raise forms.ValidationError(
+                'Учётная запись не активирована.',
+                code='inactive',
+            )
+    
+    def get_invalid_login_error(self):
+        """Переопределяем сообщение об ошибке входа"""
+        return forms.ValidationError(
+            'Неверный никнейм или пароль',
+            code='invalid_login',
+        )
+
 
 class ProfileUpdateForm(forms.ModelForm):
     """Форма обновления профиля"""
