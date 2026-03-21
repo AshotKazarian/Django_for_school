@@ -9,7 +9,7 @@
     <form method="post">
         {% csrf_token %}
         
-        {% if request.method == 'POST' and form.errors %}
+        {% if request.method == 'POST' and form.non_field_errors %}
             <div class="alert alert-error">
                 Неверный никнейм или пароль.
             </div>
