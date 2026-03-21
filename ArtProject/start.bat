@@ -107,4 +107,8 @@ echo.
 echo ========================================
 echo   Server stopped
 echo ========================================
+<<<<<<< HEAD
 pause
+=======
+pause
+>>>>>>> bed1e486d860acca59d97c07d9b51cfa4d8201db
