@@ -6,19 +6,21 @@
 <div class="form-container">
     <h1>Вход в систему</h1>
     
-    <form method="post">
+    <form method="post" novalidate>
         {% csrf_token %}
         
-        {% if request.method == 'POST' and form.non_field_errors %}
+        {# Общая ошибка (неверный пароль и т.д.) #}
+        {% if form.is_bound and form.non_field_errors %}
             <div class="alert alert-error">
-                Неверный никнейм или пароль.
+                {{ form.non_field_errors }}
             </div>
         {% endif %}
         
         <div class="form-group">
             <label for="{{ form.username.id_for_label }}" class="form-label">Никнейм</label>
             {{ form.username }}
-            {% if form.username.errors %}
+            {# Ошибки поля username показываем только если форма отправлена #}
+            {% if form.is_bound and form.username.errors %}
                 <div class="form-errors">{{ form.username.errors }}</div>
             {% endif %}
         </div>
@@ -26,7 +28,8 @@
         <div class="form-group">
             <label for="{{ form.password.id_for_label }}" class="form-label">Пароль</label>
             {{ form.password }}
-            {% if form.password.errors %}
+            {# Ошибки поля password показываем только если форма отправлена #}
+            {% if form.is_bound and form.password.errors %}
                 <div class="form-errors">{{ form.password.errors }}</div>
             {% endif %}
         </div>
